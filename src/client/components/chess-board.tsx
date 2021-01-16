@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Toolbox} from "./toolbox";
 import {ChessIcon} from "./chess-icon";
 import {BoardElement, BoardPosition, BoardState} from "../../types";
 import "./chess-board.css";
@@ -20,6 +21,7 @@ export const ChessBoard: React.FC<PropsType> = ({ data, onSetPosition }) => {
 
   return (
     <div className="chess-board-container">
+      <Toolbox onPick={setPicked} className="toolbox" />
       <div className={`side-counter ${data.color}-bottom`}>
         {sideNumbers.map(number => <div key={number}>{number}</div>)}
       </div>
@@ -30,7 +32,7 @@ export const ChessBoard: React.FC<PropsType> = ({ data, onSetPosition }) => {
         {data.board.map((row, rowIndex) => (
           <div key={rowIndex} className={`board-row row-${rowIndex % 2}`}>
             {row.map((col, colIndex) => {
-              const onClick = () => {};
+              const onClick = () => { console.log(rowIndex, colIndex) };
 
               return (
                 <div key={colIndex} className={`board-field col-${colIndex % 2}`} onClick={onClick}>

@@ -78,3 +78,21 @@
 .chess-board .row-1 .col-0 {
   background: saddlebrown;
 }
+
+.toolbox {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  right: -200px;
+  width: 150px;
+}
+
+.toolbox button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 36px;
+  width: 70px;
+  height: 70px;
+}

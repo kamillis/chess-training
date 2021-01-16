@@ -14,9 +14,9 @@ export const BoardSelector: React.FC = () => {
   }, [value]);
 
   return (
-    <>
-      <input type="text" placeholder="Type board ID" value={value} onChange={onChange} />
+    <div>
+      <input type="text" placeholder="Type board ID" value={value} onChange={onChange} />{" "}
       <button type="button" disabled={!value.length} onClick={onSubmit}>Submit</button>
-    </>
+    </div>
   );
 };

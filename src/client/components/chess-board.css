@@ -1,0 +1,40 @@
+.chess-board {
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chess-board.black-bottom {
+  flex-direction: column-reverse;
+}
+
+.board-row {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.chess-board.black-bottom .board-row {
+  flex-direction: row-reverse;
+}
+
+.board-field {
+  cursor: pointer;
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px black solid;
+}
+
+.chess-board .row-0 .col-0,
+.chess-board .row-1 .col-1 {
+  background: beige;
+}
+
+.chess-board .row-0 .col-1,
+.chess-board .row-1 .col-0 {
+  background: saddlebrown;
+}

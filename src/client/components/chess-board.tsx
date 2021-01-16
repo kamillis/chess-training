@@ -1,4 +1,5 @@
 import * as React from "react";
+import {ChessIcon} from "./chess-icon";
 import {BoardElement, BoardPosition, BoardState} from "../../types";
 import "./chess-board.css";
 
@@ -33,7 +34,7 @@ export const ChessBoard: React.FC<PropsType> = ({ data, onSetPosition }) => {
 
               return (
                 <div key={colIndex} className={`board-field col-${colIndex % 2}`} onClick={onClick}>
-                  {col}
+                  <ChessIcon boardElement={col} />
                 </div>
               );
             })}

@@ -1,7 +1,7 @@
 import * as React from "react";
-import {BoardSelector} from "./board-selector";
-import {TrainingBoard} from "./training-board";
-import "./container.css";
+import {BoardSelector} from "../board-selector";
+import {TrainingBoard} from "../training-board";
+import "./styles.scss";
 
 export const Container: React.FC = () => {
   const [board, setBoard] = React.useState("");

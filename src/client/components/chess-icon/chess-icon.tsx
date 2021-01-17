@@ -1,18 +1,18 @@
 import * as React from "react";
-import {BoardElement} from "../../types";
+import {BoardElement} from "../../../types";
 
-import whitePawn from "../assets/white-pawn.svg";
-import whiteRook from "../assets/white-rook.svg";
-import whiteKnight from "../assets/white-knight.svg";
-import whiteBishop from "../assets/white-bishop.svg";
-import whiteQueen from "../assets/white-queen.svg";
-import whiteKing from "../assets/white-king.svg";
-import blackPawn from "../assets/black-pawn.svg";
-import blackRook from "../assets/black-rook.svg";
-import blackKnight from "../assets/black-knight.svg";
-import blackBishop from "../assets/black-bishop.svg";
-import blackQueen from "../assets/black-queen.svg";
-import blackKing from "../assets/black-king.svg";
+import whitePawn from "../../assets/white-pawn.svg";
+import whiteRook from "../../assets/white-rook.svg";
+import whiteKnight from "../../assets/white-knight.svg";
+import whiteBishop from "../../assets/white-bishop.svg";
+import whiteQueen from "../../assets/white-queen.svg";
+import whiteKing from "../../assets/white-king.svg";
+import blackPawn from "../../assets/black-pawn.svg";
+import blackRook from "../../assets/black-rook.svg";
+import blackKnight from "../../assets/black-knight.svg";
+import blackBishop from "../../assets/black-bishop.svg";
+import blackQueen from "../../assets/black-queen.svg";
+import blackKing from "../../assets/black-king.svg";
 
 type PropsType = {
   boardElement: BoardElement

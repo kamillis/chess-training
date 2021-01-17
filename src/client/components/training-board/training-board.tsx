@@ -1,7 +1,7 @@
 import * as React from "react";
-import {useChessBoard} from "../hooks/use-chess-board";
-import {ChessBoard} from "./chess-board";
-import "./training-board.css";
+import {useChessBoard} from "../../hooks/use-chess-board";
+import {ChessBoard} from "../chess-board";
+import "./styles.scss";
 
 type PropsType = {
   board: string

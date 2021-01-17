@@ -69,6 +69,10 @@
   border: 1px black solid;
 }
 
+.board-field.picked {
+  box-shadow: inset 0 0 10px #000;
+}
+
 .chess-board .row-0 .col-0,
 .chess-board .row-1 .col-1 {
   background: beige;

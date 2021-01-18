@@ -13,11 +13,14 @@ export const useBoardPicker = (onPut: (boardElement: BoardElement, from: null | 
   }, [picked]);
 
   const onPickOrPut = (row: number, col: number, boardElement: BoardElement) => {
+    // case if you put element on the board
     if (picked && (!picked.from || !isPickedByPosition(row, col))) {
-      setPicked(null);
+      if (picked.from) setPicked(null);
       onPut(picked.boardElement, picked.from, [row, col]);
+    // case if you click on the same element on the board
     } else if (picked && picked.from && isPickedByPosition(row, col)) {
       setPicked(null);
+    // case if you pick element from the board
     } else if (!picked && boardElement !== "") {
       setPicked({ boardElement, from: [row, col] });
     }

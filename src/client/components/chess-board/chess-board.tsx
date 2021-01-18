@@ -1,21 +1,21 @@
 import * as React from "react";
 import classNames from "classnames";
-import {Toolbox} from "../toolbox";
-import {ChessIcon} from "../chess-icon";
-import {BoardElement, BoardPosition, BoardState} from "../../../types";
-import {useBoardPicker} from "../../hooks/use-board-picker";
+import { Toolbox } from "../toolbox";
+import { ChessIcon } from "../chess-icon";
+import { BoardState, PickedElementTransition } from "../../../types";
+import { useBoardPicker } from "../../hooks/use-board-picker";
 import "./styles.scss";
 
 type PropsType = {
   data: BoardState,
-  onSetPosition: (boardElement: BoardElement, from: null | BoardPosition, to: BoardPosition) => void
+  onPut: (transition: PickedElementTransition) => void
 };
 
 const sideNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
 const bottomLetters = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
-export const ChessBoard: React.FC<PropsType> = ({ data, onSetPosition }) => {
-  const { setPicked, onPickOrPut, isPickedByPosition, isPickedByElement } = useBoardPicker(onSetPosition);
+export const ChessBoard: React.FC<PropsType> = ({ data, onPut }) => {
+  const { setPicked, onPickOrPut, isPickedByPosition, isPickedByElement } = useBoardPicker(onPut);
 
   return (
     <div className="chess-board-container">
@@ -38,7 +38,7 @@ export const ChessBoard: React.FC<PropsType> = ({ data, onSetPosition }) => {
                   { picked: isPickedByPosition(rowIndex, colIndex) }
                 )}
               >
-                <ChessIcon boardElement={boardElement} />
+                <ChessIcon boardElement={boardElement} className="chess-icon" />
               </div>
             ))}
           </div>

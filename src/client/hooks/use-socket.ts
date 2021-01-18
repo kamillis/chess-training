@@ -1,5 +1,5 @@
 import * as React from "react";
-import {io, Socket} from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 
 export const useSocket = <T>(roomId: string) => {
   const [data, setData] = React.useState<T>();

@@ -1,14 +1,18 @@
 import * as React from "react";
-import {BoardElement, BoardPosition} from "../../types";
+import {
+  BoardElement,
+  PickedElement,
+  PickedElementTransition
+} from "../../types";
 
-export const useBoardPicker = (onPut: (boardElement: BoardElement, from: null | BoardPosition, to: BoardPosition) => void) => {
-  const [picked, setPicked] = React.useState<{ boardElement: BoardElement, from: null | BoardPosition } | null>(null);
+export const useBoardPicker = (onPut: (transition: PickedElementTransition) => void) => {
+  const [picked, setPicked] = React.useState<PickedElement | null>(null);
 
   const isPickedByPosition = React.useCallback((row: number, col: number): boolean => {
     return picked?.from?.[0] === row && picked?.from?.[1] === col;
   }, [picked]);
 
-  const isPickedByElement = React.useCallback((boardElement: BoardElement) => {
+  const isPickedByElement = React.useCallback((boardElement: BoardElement): boolean => {
     return picked?.from === null && picked?.boardElement === boardElement;
   }, [picked]);
 
@@ -16,7 +20,11 @@ export const useBoardPicker = (onPut: (boardElement: BoardElement, from: null | 
     // case if you put element on the board
     if (picked && (!picked.from || !isPickedByPosition(row, col))) {
       if (picked.from) setPicked(null);
-      onPut(picked.boardElement, picked.from, [row, col]);
+      onPut({
+        boardElement: picked.boardElement,
+        from: picked.from,
+        to: [row, col]
+      });
     // case if you click on the same element on the board
     } else if (picked && picked.from && isPickedByPosition(row, col)) {
       setPicked(null);

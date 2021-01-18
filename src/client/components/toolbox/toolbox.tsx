@@ -1,12 +1,12 @@
 import * as React from "react";
 import classNames from "classnames";
-import {BoardElement} from "../../../types";
-import {ChessIcon} from "../chess-icon";
+import { BoardElement, PickedElement } from "../../../types";
+import { ChessIcon } from "../chess-icon";
 import "./styles.scss";
 
 type PropsType = {
   isPicked: (boardElement: BoardElement) => boolean,
-  onPick: (value: { boardElement: BoardElement, from: null } | null) => void,
+  onPick: (value: PickedElement | null) => void,
   className?: string
 };
 
@@ -25,7 +25,7 @@ export const Toolbox: React.FC<PropsType> = ({ isPicked, onPick, className }) =>
             onClick={() => onPick(picked ? null : { boardElement, from: null })}
             className={classNames("toolbox-button", { picked })}
           >
-            {boardElement ? <ChessIcon boardElement={boardElement} /> : "X"}
+            {boardElement ? <ChessIcon boardElement={boardElement} className="chess-icon" /> : "X"}
           </button>
         );
       })}

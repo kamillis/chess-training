@@ -1,5 +1,5 @@
-import {Server, Socket} from "socket.io";
-import {BoardState} from "../types";
+import { Server, Socket } from "socket.io";
+import { BoardState } from "../types";
 
 const database: { [roomId: string]: BoardState } = {};
 

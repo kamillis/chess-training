@@ -1,9 +1,12 @@
 import * as React from "react";
-import {BoardElement, BoardPosition, BoardState} from "../../types";
+import {
+  BoardState,
+  PickedElementTransition
+} from "../../types";
 import {useSocket} from "./use-socket";
 
-export const useChessBoard = (board: string) => {
-  const [data, setData] = useSocket<BoardState>(board);
+export const useChessBoard = (boardId: string) => {
+  const [data, setData] = useSocket<BoardState>(boardId);
 
   const onSetDefault = React.useCallback(() => {
     setData({
@@ -45,7 +48,7 @@ export const useChessBoard = (board: string) => {
     }
   }, [setData, data]);
 
-  const onSetPosition = React.useCallback((boardElement: BoardElement, from: null | BoardPosition, to: BoardPosition) => {
+  const onPut = React.useCallback(({ boardElement, from, to }: PickedElementTransition) => {
     if (data) {
       const newBoard = [...data.board];
       newBoard[to[0]] = [...newBoard[to[0]]];
@@ -60,5 +63,5 @@ export const useChessBoard = (board: string) => {
     }
   }, [setData, data]);
 
-  return { data, onSetPosition, onToggleColor, onSetDefault, onClear };
+  return { data, onPut, onToggleColor, onSetDefault, onClear };
 };

@@ -2,7 +2,7 @@ import express from "express";
 import compression from "compression";
 import { Server } from "http";
 import { Server as SocketServer } from "socket.io";
-import {boardManager} from "./board-manager";
+import { boardManager } from "./board-manager";
 
 const port = process.env.PORT || 3000;
 

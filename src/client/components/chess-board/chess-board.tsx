@@ -1,6 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
-import { Toolbox } from "../toolbox";
+import { Toolbox } from "./toolbox";
 import { ChessIcon } from "../chess-icon";
 import { BoardState, PickedElementTransition } from "../../../types";
 import { useBoardPicker } from "../../hooks/use-board-picker";

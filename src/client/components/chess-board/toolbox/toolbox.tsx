@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
-import { BoardElement, PickedElement } from "../../../types";
-import { ChessIcon } from "../chess-icon";
+import { BoardElement, PickedElement } from "../../../../types";
+import { ChessIcon } from "../../chess-icon";
 import "./styles.scss";
 
 type PropsType = {

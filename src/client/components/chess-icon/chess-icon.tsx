@@ -21,18 +21,18 @@ type PropsType = {
 
 export const getSource = (boardElement: BoardElement): string => {
   switch (boardElement) {
-    case "PW": return whitePawn;
-    case "RW": return whiteRook;
-    case "KW": return whiteKnight;
-    case "BW": return whiteBishop;
-    case "QW": return whiteQueen;
-    case "KIW": return whiteKing;
-    case "PB": return blackPawn;
-    case "RB": return blackRook;
-    case "KB": return blackKnight;
-    case "BB": return blackBishop;
-    case "QB": return blackQueen;
-    case "KIB": return blackKing;
+    case "P": return whitePawn;
+    case "R": return whiteRook;
+    case "N": return whiteKnight;
+    case "B": return whiteBishop;
+    case "Q": return whiteQueen;
+    case "K": return whiteKing;
+    case "p": return blackPawn;
+    case "r": return blackRook;
+    case "n": return blackKnight;
+    case "b": return blackBishop;
+    case "q": return blackQueen;
+    case "k": return blackKing;
     default: throw new Error("Icon is not exist");
   }
 };

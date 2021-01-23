@@ -12,14 +12,14 @@ export const useChessBoard = (boardId: string) => {
     setData({
       color: "white",
       board: [
-        ["RB", "KB", "BB", "QB", "KIB", "BB", "KB", "RB"],
-        ["PB", "PB", "PB", "PB", "PB", "PB", "PB", "PB"],
+        ["r", "n", "b", "q", "k", "b", "n", "r"],
+        ["p", "p", "p", "p", "p", "p", "p", "p"],
         ["", "", "", "", "", "", "", ""],
         ["", "", "", "", "", "", "", ""],
         ["", "", "", "", "", "", "", ""],
         ["", "", "", "", "", "", "", ""],
-        ["PW", "PW", "PW", "PW", "PW", "PW", "PW", "PW"],
-        ["RW", "KW", "BW", "QW", "KIW", "BW", "KW", "RW"],
+        ["P", "P", "P", "P", "P", "P", "P", "P"],
+        ["R", "N", "B", "Q", "K", "B", "N", "R"],
       ]
     });
   }, [setData]);

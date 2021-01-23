@@ -1,9 +1,9 @@
 import * as React from "react";
+import { useSocket } from "./use-socket";
 import {
   BoardState,
   PickedElementTransition
 } from "../../types";
-import {useSocket} from "./use-socket";
 
 export const useChessBoard = (boardId: string) => {
   const [data, setData] = useSocket<BoardState>(boardId);

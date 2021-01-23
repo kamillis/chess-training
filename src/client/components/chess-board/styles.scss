@@ -1,47 +1,12 @@
 .chess-board-container {
   position: relative;
 
-  .side-counter {
-    width: 30px;
-    height: 600px;
-    left: -30px;
-    position: absolute;
-    display: flex;
-    flex-direction: column-reverse;
-
-    &.black-bottom {
-      flex-direction: column;
-    }
-  }
-
-  .bottom-counter {
-    width: 600px;
-    height: 30px;
-    position: absolute;
-    bottom: -30px;
-    display: flex;
-    flex-direction: row;
-
-    &.black-bottom {
-      flex-direction: row-reverse;
-    }
-  }
-
-  .side-counter div,
-  .bottom-counter div {
-    flex: 1 1 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px black solid;
-  }
-
   .chess-board {
     width: 600px;
     height: 600px;
     display: flex;
     flex-direction: column;
+    counter-reset: row-count 9;
 
     .row-0 .col-0,
     .row-1 .col-1 {
@@ -57,6 +22,33 @@
       flex: 1 1 0;
       display: flex;
       flex-direction: row;
+      position: relative;
+    }
+
+    &.white-bottom {
+      .board-row {
+        &:before {
+          z-index: 2;
+          top: 5px;
+          left: 5px;
+          position: absolute;
+          content: counter(row-count);
+          counter-increment: row-count -1;
+        }
+
+        &:last-child {
+          counter-reset: col-count;
+
+          .board-field:before {
+            z-index: 2;
+            bottom: 5px;
+            left: 5px;
+            position: absolute;
+            content: counter(col-count, lower-alpha);
+            counter-increment: col-count;
+          }
+        }
+      }
     }
 
     &.black-bottom {
@@ -64,26 +56,29 @@
 
       .board-row {
         flex-direction: row-reverse;
+
+        &:after {
+          z-index: 2;
+          top: 5px;
+          left: 5px;
+          position: absolute;
+          content: counter(row-count);
+          counter-increment: row-count -1;
+        }
+
+        &:first-child {
+          counter-reset: col-count;
+
+          .board-field:before {
+            z-index: 2;
+            bottom: 5px;
+            left: 5px;
+            position: absolute;
+            content: counter(col-count, lower-alpha);
+            counter-increment: col-count;
+          }
+        }
       }
-    }
-  }
-
-  .board-field {
-    cursor: pointer;
-    flex: 1 1 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px black solid;
-
-    .chess-icon {
-      width: 60px;
-      height: 60px;
-    }
-
-    &.picked {
-      box-shadow: inset 0 0 10px #000;
     }
   }
 

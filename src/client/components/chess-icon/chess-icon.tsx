@@ -19,22 +19,28 @@ type PropsType = {
   className: string
 };
 
-export const ChessIcon: React.FC<PropsType> = ({ boardElement, className }) => {
-  const props = { className };
-
+export const getSource = (boardElement: BoardElement): string => {
   switch (boardElement) {
-    case "PW": return <img {...props} src={whitePawn} alt="White pawn" />;
-    case "RW": return <img {...props} src={whiteRook} alt="White rook" />;
-    case "KW": return <img {...props} src={whiteKnight} alt="White knight" />;
-    case "BW": return <img {...props} src={whiteBishop} alt="White bishop" />;
-    case "QW": return <img {...props} src={whiteQueen} alt="White queen" />;
-    case "KIW": return <img {...props} src={whiteKing} alt="White king" />;
-    case "PB": return <img {...props} src={blackPawn} alt="Black pawn" />;
-    case "RB": return <img {...props} src={blackRook} alt="Black rook" />;
-    case "KB": return <img {...props} src={blackKnight} alt="Black knight" />;
-    case "BB": return <img {...props} src={blackBishop} alt="Black bishop" />;
-    case "QB": return <img {...props} src={blackQueen} alt="Black queen" />;
-    case "KIB": return <img {...props} src={blackKing} alt="Black king" />;
-    default: return null;
+    case "PW": return whitePawn;
+    case "RW": return whiteRook;
+    case "KW": return whiteKnight;
+    case "BW": return whiteBishop;
+    case "QW": return whiteQueen;
+    case "KIW": return whiteKing;
+    case "PB": return blackPawn;
+    case "RB": return blackRook;
+    case "KB": return blackKnight;
+    case "BB": return blackBishop;
+    case "QB": return blackQueen;
+    case "KIB": return blackKing;
+    default: throw new Error("Icon is not exist");
+  }
+};
+
+export const ChessIcon: React.FC<PropsType> = ({ boardElement, className }) => {
+  try {
+    return <img src={getSource(boardElement)} alt="Chess element" className={className} />;
+  } catch (err) {
+    return null;
   }
 }

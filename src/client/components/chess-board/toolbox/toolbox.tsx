@@ -1,7 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 import { BoardElement, PickedElement } from "../../../../types";
-import { ChessIcon } from "../../chess-icon";
+import { ChessIcon, getSource } from "../../chess-icon";
+import { BOARD_ELEMENTS } from "../../../../consts";
+import { Draggable } from "../../draggable";
 import "./styles.scss";
 
 type PropsType = {
@@ -10,15 +12,19 @@ type PropsType = {
   className?: string
 };
 
-const boardElements: Array<BoardElement> = ["PW", "RW", "KW", "BW", "QW", "KIW", "PB", "RB", "KB", "BB", "QB", "KIB", ""];
-
 export const Toolbox: React.FC<PropsType> = ({ isPicked, onPick, className }) => {
   return (
     <div className={className}>
-      {boardElements.map(boardElement => {
+      {BOARD_ELEMENTS.map(boardElement => {
         const picked = isPicked(boardElement);
 
-        return (
+        const dragItem: PickedElement & { type: string } = {
+          boardElement,
+          type: boardElement,
+          from: null
+        };
+
+        const button = (
           <button
             type="button"
             key={boardElement || "X"}
@@ -27,6 +33,12 @@ export const Toolbox: React.FC<PropsType> = ({ isPicked, onPick, className }) =>
           >
             {boardElement ? <ChessIcon boardElement={boardElement} className="chess-icon" /> : "X"}
           </button>
+        );
+
+        return !boardElement ? button : (
+          <Draggable key={boardElement || "X"} dragItem={dragItem} dragImage={getSource(boardElement)}>
+            {button}
+          </Draggable>
         );
       })}
     </div>

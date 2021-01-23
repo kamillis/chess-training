@@ -16,7 +16,12 @@ export const useBoardPicker = (onPut: (transition: PickedElementTransition) => v
     return picked?.from === null && picked?.boardElement === boardElement;
   }, [picked]);
 
-  const onPickOrPut = (row: number, col: number, boardElement: BoardElement) => {
+  const onDrop = React.useCallback((transition: PickedElementTransition) => {
+    if (picked?.from) setPicked(null);
+    onPut(transition);
+  }, [picked, setPicked, onPut]);
+
+  const onPickOrPut = React.useCallback((row: number, col: number, boardElement: BoardElement) => {
     // case if you put element on the board
     if (picked && (!picked.from || !isPickedByPosition(row, col))) {
       if (picked.from) setPicked(null);
@@ -32,7 +37,7 @@ export const useBoardPicker = (onPut: (transition: PickedElementTransition) => v
     } else if (!picked && boardElement !== "") {
       setPicked({ boardElement, from: [row, col] });
     }
-  };
+  }, [picked, isPickedByPosition, setPicked, onPut]);
 
-  return { setPicked, isPickedByElement, isPickedByPosition, onPickOrPut };
+  return { setPicked, isPickedByElement, isPickedByPosition, onPickOrPut, onDrop };
 };
